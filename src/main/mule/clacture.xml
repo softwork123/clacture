@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="503af67a-8a21-4876-a95c-e1c481494fe1" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="clactureFlow" doc:id="fa7f6fcc-3e57-41b6-b5cb-e80e07807162" >
+		<http:listener doc:name="Listener" doc:id="706ac88f-21fc-4f17-bb2e-34f885588c4f" config-ref="HTTP_Listener_config" path="/calculatore"/>
+		<logger level="INFO" doc:name="entery Log" doc:id="4b037c5d-8660-4246-91f3-7c76d64d8d34" />
+		<ee:transform doc:name="Transform Message" doc:id="5aa2400c-42ad-48f6-bb5e-8fcd201b5ab6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+var value1=20
+var value2=30
+fun calc(num1,num2)={
+
+ 
+
+sum :num1+num2,
+sub :num1-num2,
+mul :num1*num2,
+div :num1/num2
+}
+
+ 
+
+
+output application/json
+---
+{
+
+ 
+
+math:calc(value1,value2)
+
+ 
+
+
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="exit Log" doc:id="7e787a24-457a-4d9f-8855-60a5df0c0933" />
+	</flow>
+</mule>
