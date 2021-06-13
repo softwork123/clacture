@@ -29,17 +29,26 @@
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+			<configuration>
+				</configuration>
+			</plugin>
+			<plugin>
+			<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
 				<configuration> 
         <cloudHubDeployment> 
           <muleVersion>${app.runtime}</muleVersion> 
-          <username>gouse</username> 
-          <password>Khazi@1234!</password> 
+          <username>gouse7866</username> 
+          <password>Gousekgm1</password> 
           <environment>Sandbox</environment> 
           <!-- <region>eu-central-1</region>  -->
-          <workerType>Micro</workerType>
-          <workers>1</workers> 
+          <objectStoreV2>true</objectStoreV2>
           <uri>https://anypoint.mulesoft.com</uri>; 
-          <applicationName>calc</applicationName> 
+          <applicationName>kgm8900</applicationName>
+          <workerType>MICRO</workerType>
+          <workers>1</workers> 
         </cloudHubDeployment> 
       </configuration> 
       <executions> 
